@@ -18,7 +18,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test2(上傳檔案到遠端伺服器)"
+        android:text="test2(用別人的api上傳檔案到遠端伺服器)"
         android:onClick="test2"
         />
 
@@ -38,6 +38,12 @@
         android:layout_height="wrap_content"
         android:text="test4(使用官方volley方式,用POST方法傳遞request給遠端伺服器)"
         android:onClick="test4"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test5(使用別人api+官方volley方式,上傳檔案給遠端伺服器)"
+        android:onClick="test5"
         />
     <TextView
         android:id="@+id/mesg"

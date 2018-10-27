@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,6 +35,8 @@ import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -271,6 +274,43 @@ public class MainActivity extends AppCompatActivity {
         queue.add(request);
 
 
+    }
+
+    public void test5(View view) {
+        File upload = new File(sdroot,"brad.pdf");
+
+        try {
+            FileInputStream fin = new FileInputStream(upload);
+            byte[] buf = new byte[(int)upload.length()];
+            fin.read(buf);
+            fin.close();
+
+            final byte[] sendData = buf;
+
+            VolleyMultipartRequest request =
+                    new VolleyMultipartRequest(Request.Method.POST,
+                            "http://192.168.201.105:8080/JavaEE/Brad11",
+                            new Response.Listener<NetworkResponse>() {
+                                @Override
+                                public void onResponse(NetworkResponse response) {
+                                    Log.v("brad",new String(response.data));
+                                }
+                    },null){
+                        @Override
+                        protected Map<String, DataPart> getByteData() throws AuthFailureError {
+
+                            HashMap<String,DataPart> params = new HashMap<>();
+                            DataPart dataPart = new DataPart("brad4.pdf",sendData);
+                            params.put("upload",dataPart);
+
+                            return params;
+                        }
+                    };
+            queue.add(request);
+
+        } catch (Exception e) {
+            Log.v("brad",e.toString());
+        }
     }
 
     private class MyAdapter extends BaseAdapter{
