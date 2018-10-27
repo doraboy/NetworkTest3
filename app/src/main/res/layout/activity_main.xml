@@ -25,13 +25,29 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test3(使用官方volley方式)"
+        android:text="test3(使用官方volley方式,從網站撈json資料)"
         android:onClick="test3"
+        />
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test4(使用官方volley方式,用POST方法傳遞request給遠端伺服器)"
+        android:onClick="test4"
         />
     <TextView
         android:id="@+id/mesg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></ListView>
 
 </LinearLayout>
